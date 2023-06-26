@@ -59,6 +59,8 @@ class CountryViewModel: CountryViewModelProtocol {
     }
 
     func numberOfRowInSection(isSearchControllerActive: Bool) -> Int {
+        isSearching.value = isSearchControllerActive
+
         return isSearchControllerActive ? self.filteredcountryList.count : self.countries.count
     }
 }

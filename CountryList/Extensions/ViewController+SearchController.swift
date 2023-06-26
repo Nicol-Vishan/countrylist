@@ -17,7 +17,8 @@ extension ViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let searchText = searchController.searchBar.text else {return}
         if searchText == "" {
-            reloadTableView()
+            viewModel.isSearching.value = false
+            loadData()
         } else {
         filtering(searchText: searchText)
             reloadTableView()
@@ -25,6 +26,6 @@ extension ViewController: UISearchBarDelegate {
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        reloadTableView()
+        loadData()
     }
 }

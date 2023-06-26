@@ -47,7 +47,7 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-        if searchController.isActive{
+        if isSearching {
             vc.countryDetail = viewModel.filteredcountryList[indexPath.row]
         }else{
             vc.countryDetail = viewModel.countries[indexPath.row]

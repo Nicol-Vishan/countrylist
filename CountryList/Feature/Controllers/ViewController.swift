@@ -39,10 +39,9 @@ class ViewController: UIViewController {
         } else {
             loadData()
         }
-        reloadTableView()
     }
     
-    private func loadData() {
+    func loadData() {
         Task {
             await viewModel.loadData()
             reloadTableView()
