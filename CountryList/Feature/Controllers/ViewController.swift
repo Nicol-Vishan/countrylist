@@ -15,7 +15,9 @@ class ViewController: UIViewController {
 
     let searchController = UISearchController()
     
-    var searching: Bool = false
+    var isSearching: Bool = false
+
+    var cellDataSource: [Countries] = []
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +29,16 @@ class ViewController: UIViewController {
         title = "Country List"
         setupTableView()
         setupSearchBar()
-        loadData()
+        bindViewModel()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if isSearching {
+            filtering(searchText: searchController.searchBar.text ?? "")
+        } else {
+            loadData()
+        }
     }
     
     private func loadData() {
@@ -42,7 +53,28 @@ class ViewController: UIViewController {
             viewModel.search(country: searchText)
         }
     }
-    
+
+    func bindViewModel() {
+        viewModel.observableCountries.bind { [weak self] countries in
+            guard let self = self, let countries = countries else {
+                return
+            }
+            self.cellDataSource = countries
+        }
+        viewModel.observableFilterCountries.bind { [weak self] countries in
+            guard let self = self, let countries = countries else {
+                return
+            }
+            self.cellDataSource.removeAll()
+            self.cellDataSource = countries
+        }
+        viewModel.isSearching.bind { [weak self] searching in
+            guard let self = self, let searching = searching else {
+                return
+            }
+            self.isSearching = searching
+        }
+    }
 }
 
 

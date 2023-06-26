@@ -22,6 +22,7 @@
 		749D286D2A444B7C00B8292E /* UIImage+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749D286C2A444B7C00B8292E /* UIImage+String.swift */; };
 		749D286F2A444C3400B8292E /* ViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749D286E2A444C3400B8292E /* ViewController+TableView.swift */; };
 		749D28712A44798000B8292E /* ViewController+SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749D28702A44798000B8292E /* ViewController+SearchController.swift */; };
+		749D28772A44866F00B8292E /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749D28762A44866F00B8292E /* Observable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		749D286C2A444B7C00B8292E /* UIImage+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+String.swift"; sourceTree = "<group>"; };
 		749D286E2A444C3400B8292E /* ViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+TableView.swift"; sourceTree = "<group>"; };
 		749D28702A44798000B8292E /* ViewController+SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+SearchController.swift"; sourceTree = "<group>"; };
+		749D28762A44866F00B8292E /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 		3887E0CB28F6E9A8001F5709 /* CountryList */ = {
 			isa = PBXGroup;
 			children = (
+				749D28752A44865900B8292E /* Clasess */,
 				749D286B2A444B5B00B8292E /* Extensions */,
 				3887E11328F72796001F5709 /* Model */,
 				3887E11428F727AB001F5709 /* Networking */,
@@ -166,6 +169,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		749D28752A44865900B8292E /* Clasess */ = {
+			isa = PBXGroup;
+			children = (
+				749D28762A44866F00B8292E /* Observable.swift */,
+			);
+			path = Clasess;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -237,6 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				749D28772A44866F00B8292E /* Observable.swift in Sources */,
 				3887E0E528F6EBFB001F5709 /* CountryTableViewCell.swift in Sources */,
 				3887E0E128F6E9BE001F5709 /* ApiManager.swift in Sources */,
 				3887E11228F71FE5001F5709 /* CountryViewModel.swift in Sources */,

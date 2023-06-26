@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol CountryViewModelProtocol {
-    var countries: [Countries] { get set }
+    var countries: [Countries] { get set}
     var searchResult: [Countries] { get set}
     var error: Error? {get set}
     var service: ApiManager {get}
@@ -20,6 +20,9 @@ protocol CountryViewModelProtocol {
 
 class CountryViewModel: CountryViewModelProtocol {
     var countries: [Countries] = []
+    var observableCountries: Observable<[Countries]> = Observable(value: nil)
+    var observableFilterCountries: Observable<[Countries]> = Observable(value: nil)
+    var isSearching: Observable<Bool> = Observable(value: false)
     var searchResult: [Countries] = []
     var service: ApiManager = ApiManager()
     var error: Error?
@@ -30,6 +33,7 @@ class CountryViewModel: CountryViewModelProtocol {
         switch result {
         case .success(let countries):
             self.countries = countries
+            self.mapData()
         case .failure(let error):
             self.error = error
         case .none:
@@ -37,12 +41,15 @@ class CountryViewModel: CountryViewModelProtocol {
             break
         }
     }
+
+    func mapData() {
+        self.observableCountries.value = self.countries
+    }
     
     func search(country: String) {
-        filteredcountryList = countries.filter({ (countries: Countries) -> Bool in
-            let regionMatch = countries.region.range(of: country, options: NSString.CompareOptions.caseInsensitive)
-            return regionMatch != nil
-        })
+        self.isSearching.value = !country.isEmpty
+        filteredcountryList = observableCountries.value?.filter({$0.region.localizedCaseInsensitiveContains(country)}) ?? []
+        self.observableFilterCountries.value = filteredcountryList
     }
 
     func numberOfRowInSection(isSearchControllerActive: Bool) -> Int {

@@ -22,19 +22,19 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchController.isActive {
+        if isSearching {
             return self.viewModel.filteredcountryList.count
         } else {
-            return self.viewModel.countries.count
+            return self.cellDataSource.count
         }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CountryTableViewCell
         if searchController.isActive && searchController.searchBar.text != "" && viewModel.filteredcountryList.count > 0{
-            cell.setupUI(tableView: tableView, cName: viewModel.filteredcountryList[indexPath.row].name.common, cFlag: viewModel.filteredcountryList[indexPath.row].flags.png ?? "")
+            cell.setupUI(tableView: tableView, cName: self.cellDataSource[indexPath.row].name.common, cFlag: self.cellDataSource[indexPath.row].flags.png ?? "")
         } else {
-            cell.setupUI(tableView: tableView, cName: viewModel.countries[indexPath.row].name.common, cFlag: viewModel.countries[indexPath.row].flags.png ?? "")
+            cell.setupUI(tableView: tableView, cName: self.cellDataSource[indexPath.row].name.common, cFlag: self.cellDataSource[indexPath.row].flags.png ?? "")
         }
 
         return cell
@@ -49,7 +49,6 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource{
             vc.countryDetail = viewModel.countries[indexPath.row]
         }
         navigationController?.pushViewController(vc, animated: true)
-        searching = false
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

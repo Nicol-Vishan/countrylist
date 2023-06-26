@@ -3,4 +3,54 @@
    uuid = "D91A9740-3622-40A6-BBA8-EB64EA923942"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DC412438-B79B-4148-8E2B-43B1B1875089"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CountryList/Extensions/ViewController+SearchController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "searchBar(_:textDidChange:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DC412438-B79B-4148-8E2B-43B1B1875089 - 3695d28d76d920f1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CountryList.ViewController.searchBar(_: __C.UISearchBar, textDidChange: Swift.String) -&gt; ()"
+                  moduleName = "CountryList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nicol.warnakulasooriya/Desktop/Personal%20Projects/Swift%20Projects/CountryList%202/CountryList/Extensions/ViewController+SearchController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  uuid = "DC412438-B79B-4148-8E2B-43B1B1875089 - 3695d28d76d920f1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CountryList.ViewController.searchBar(_: __C.UISearchBar, textDidChange: Swift.String) -&gt; ()"
+                  moduleName = "CountryList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nicol.warnakulasooriya/Desktop/Personal%20Projects/Swift%20Projects/CountryList%202/CountryList/Extensions/ViewController+SearchController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "192">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
