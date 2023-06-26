@@ -39,6 +39,7 @@ class ViewController: UIViewController {
         } else {
             loadData()
         }
+        reloadTableView()
     }
     
     private func loadData() {

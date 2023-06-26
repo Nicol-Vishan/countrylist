@@ -30,6 +30,10 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard !cellDataSource.isEmpty else {
+            reloadTableView()
+            return UITableViewCell()
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CountryTableViewCell
         if searchController.isActive && searchController.searchBar.text != "" && viewModel.filteredcountryList.count > 0{
             cell.setupUI(tableView: tableView, cName: self.cellDataSource[indexPath.row].name.common, cFlag: self.cellDataSource[indexPath.row].flags.png ?? "")

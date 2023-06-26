@@ -47,9 +47,15 @@ class CountryViewModel: CountryViewModelProtocol {
     }
     
     func search(country: String) {
-        self.isSearching.value = !country.isEmpty
-        filteredcountryList = observableCountries.value?.filter({$0.region.localizedCaseInsensitiveContains(country)}) ?? []
-        self.observableFilterCountries.value = filteredcountryList
+        guard !country.isEmpty else {
+            self.isSearching.value = false
+            self.observableFilterCountries.value = []
+            return
+        }
+            let countries = observableCountries.value ?? []
+            filteredcountryList = countries.compactMap { $0.region.localizedCaseInsensitiveContains(country) ? $0 : nil }
+            self.isSearching.value = true
+            self.observableFilterCountries.value = filteredcountryList
     }
 
     func numberOfRowInSection(isSearchControllerActive: Bool) -> Int {
