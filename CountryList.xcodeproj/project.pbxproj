@@ -24,6 +24,7 @@
 		749D28712A44798000B8292E /* ViewController+SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749D28702A44798000B8292E /* ViewController+SearchController.swift */; };
 		749D28772A44866F00B8292E /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749D28762A44866F00B8292E /* Observable.swift */; };
 		74BFBE612A49B5CC000FDE69 /* CountryTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BFBE602A49B5CC000FDE69 /* CountryTableCellViewModel.swift */; };
+		74BFBE632A49C61B000FDE69 /* CountryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BFBE622A49C61B000FDE69 /* CountryDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		749D28702A44798000B8292E /* ViewController+SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+SearchController.swift"; sourceTree = "<group>"; };
 		749D28762A44866F00B8292E /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		74BFBE602A49B5CC000FDE69 /* CountryTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableCellViewModel.swift; sourceTree = "<group>"; };
+		74BFBE622A49C61B000FDE69 /* CountryDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 			children = (
 				3887E11128F71FE5001F5709 /* CountryViewModel.swift */,
 				74BFBE602A49B5CC000FDE69 /* CountryTableCellViewModel.swift */,
+				74BFBE622A49C61B000FDE69 /* CountryDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				3887E0E328F6E9E8001F5709 /* Countries.swift in Sources */,
 				3887E0CF28F6E9A8001F5709 /* SceneDelegate.swift in Sources */,
 				749D286A2A4449EF00B8292E /* NetworkConstant.swift in Sources */,
+				74BFBE632A49C61B000FDE69 /* CountryDetailViewModel.swift in Sources */,
 				749D286D2A444B7C00B8292E /* UIImage+String.swift in Sources */,
 				749D286F2A444C3400B8292E /* ViewController+TableView.swift in Sources */,
 				3887E0E728F6F14C001F5709 /* DetailViewController.swift in Sources */,

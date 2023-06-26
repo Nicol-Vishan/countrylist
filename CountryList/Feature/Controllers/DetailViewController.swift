@@ -26,10 +26,20 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var imgcoatOfArms: UIImageView!
     
     
-    var countryDetail: Countries?
+    var viewModel: CountryDetailViewModel
+
+    required init?(coder: NSCoder, viewModel: CountryDetailViewModel) {
+        self.viewModel = viewModel
+        super.init(coder: coder)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = countryDetail?.name.common
         do {
             try setupUI()
             print("Country details loaded sucessfully..")
@@ -46,25 +56,22 @@ class DetailViewController: UIViewController {
     }
     
     func setupUI() throws {
-
-        guard let countryDetail = countryDetail else {
-            throw CountryError.countryDetailsNotFound
-        }
-        guard let countryImgUrl = URL(string: countryDetail.flags.png ?? "") else {
+        guard let countryImgUrl = URL(string: viewModel.countryFlag) else {
             throw CountryError.countryFlagNotFound
-        }
-        countryName.text = countryDetail.name.common
-        countryRegion.text =  countryDetail.region
+            }
+        self.title = viewModel.countryName
+        countryName.text = viewModel.countryName
+        countryRegion.text =  viewModel.countryRegion
         countryFlag.loadImage(url: countryImgUrl)
-        subOrigin.text = countryDetail.subregion
-        lblCapital.text = countryDetail.capital?.first
-        lblLanguages.text = countryDetail.languages?.first?.value
-        lblOfficial.text = countryDetail.name.official
-        try getSubImg(countryDetail)
+        subOrigin.text = viewModel.subOrigin
+        lblCapital.text = viewModel.capital
+        lblLanguages.text = viewModel.languages
+        lblOfficial.text = viewModel.official
+        try getSubImg(viewModel)
     }
 
-    func getSubImg(_ countryDetail: Countries) throws {
-        guard let countrySubImgUrl = URL(string: countryDetail.coatOfArms.png ?? "") else {
+    func getSubImg(_ countryDetail: CountryDetailViewModel) throws {
+        guard let countrySubImgUrl = URL(string: countryDetail.countryCoatOfArms) else {
             throw CountryError.countryCoatOfArmsImageNotFound
         }
         imgcoatOfArms.loadImage(url: countrySubImgUrl)

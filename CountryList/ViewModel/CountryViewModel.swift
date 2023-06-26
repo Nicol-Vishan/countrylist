@@ -62,4 +62,12 @@ class CountryViewModel: CountryViewModelProtocol {
     func numberOfRowInSection() -> Int {
         return isSearching.value ?? true ? self.filteredcountryList.count : self.countries.count
     }
+
+    func getCountryDetails(indexPath: Int) -> CountryDetailViewModel {
+        if isSearching.value ?? true {
+            return CountryDetailViewModel(country: self.filteredcountryList[indexPath])
+        } else {
+            return CountryDetailViewModel(country: self.countries[indexPath])
+        }
+    }
 }

@@ -31,24 +31,16 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource{
             return UITableViewCell()
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CountryTableViewCell
-        if isSearching {
-            cell.setupCell(self.cellDataSource[indexPath.row])
-        } else {
-            cell.setupCell(self.cellDataSource[indexPath.row])
-        }
-
+        cell.setupCell(self.cellDataSource[indexPath.row])
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-        if isSearching {
-            vc.countryDetail = viewModel.filteredcountryList[indexPath.row]
-        }else{
-            vc.countryDetail = viewModel.countries[indexPath.row]
-        }
-        navigationController?.pushViewController(vc, animated: true)
+        let detailViewModel = viewModel.getCountryDetails(indexPath: indexPath.row)
+        guard let detailViewController = self.storyboard?.instantiateViewController(identifier: "DetailViewController", creator: { coder in
+            return DetailViewController(coder: coder, viewModel: detailViewModel)
+        }) else { return }
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
