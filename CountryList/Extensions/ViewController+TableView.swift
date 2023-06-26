@@ -32,9 +32,9 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource{
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CountryTableViewCell
         if isSearching {
-            cell.setupUI(tableView: tableView, cName: self.cellDataSource[indexPath.row].name.common, cFlag: self.cellDataSource[indexPath.row].flags.png ?? "")
+            cell.setupCell(self.cellDataSource[indexPath.row])
         } else {
-            cell.setupUI(tableView: tableView, cName: self.cellDataSource[indexPath.row].name.common, cFlag: self.cellDataSource[indexPath.row].flags.png ?? "")
+            cell.setupCell(self.cellDataSource[indexPath.row])
         }
 
         return cell

@@ -17,19 +17,14 @@ class CountryTableViewCell: UITableViewCell {
         selectionStyle = .none
         accessoryType = .disclosureIndicator
     }
-    
-    func setupUI(tableView: UITableView,cName: String,cFlag: String) {
-        countryName.text = cName
-        guard let imgUrl = URL(string: cFlag) else { return }
+
+    func setupCell(_ viewModel: CountryTableCellViewModel) {
+        countryName.text = viewModel.countryName
+        guard let imgUrl = URL(string: viewModel.countryImgUrl) else { return
+        }
         countryFlag.loadImage(url: imgUrl)
         countryFlag.layer.cornerRadius = countryFlag.frame.size.height/2.0
         countryFlag.clipsToBounds = true
-        countryName.preferredMaxLayoutWidth = tableView.frame.size.width;
+        
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
-
 }

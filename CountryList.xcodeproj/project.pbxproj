@@ -23,6 +23,7 @@
 		749D286F2A444C3400B8292E /* ViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749D286E2A444C3400B8292E /* ViewController+TableView.swift */; };
 		749D28712A44798000B8292E /* ViewController+SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749D28702A44798000B8292E /* ViewController+SearchController.swift */; };
 		749D28772A44866F00B8292E /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749D28762A44866F00B8292E /* Observable.swift */; };
+		74BFBE612A49B5CC000FDE69 /* CountryTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BFBE602A49B5CC000FDE69 /* CountryTableCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		749D286E2A444C3400B8292E /* ViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+TableView.swift"; sourceTree = "<group>"; };
 		749D28702A44798000B8292E /* ViewController+SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+SearchController.swift"; sourceTree = "<group>"; };
 		749D28762A44866F00B8292E /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		74BFBE602A49B5CC000FDE69 /* CountryTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				3887E11128F71FE5001F5709 /* CountryViewModel.swift */,
+				74BFBE602A49B5CC000FDE69 /* CountryTableCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 			files = (
 				749D28772A44866F00B8292E /* Observable.swift in Sources */,
 				3887E0E528F6EBFB001F5709 /* CountryTableViewCell.swift in Sources */,
+				74BFBE612A49B5CC000FDE69 /* CountryTableCellViewModel.swift in Sources */,
 				3887E0E128F6E9BE001F5709 /* ApiManager.swift in Sources */,
 				3887E11228F71FE5001F5709 /* CountryViewModel.swift in Sources */,
 				3887E0D128F6E9A8001F5709 /* ViewController.swift in Sources */,

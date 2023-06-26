@@ -20,8 +20,8 @@ protocol CountryViewModelProtocol {
 
 class CountryViewModel: CountryViewModelProtocol {
     var countries: [Countries] = []
-    var observableCountries: Observable<[Countries]> = Observable(value: nil)
-    var observableFilterCountries: Observable<[Countries]> = Observable(value: nil)
+    var observableCountries: Observable<[CountryTableCellViewModel]> = Observable(value: nil)
+    var observableFilterCountries: Observable<[CountryTableCellViewModel]> = Observable(value: nil)
     var searchResult: [Countries] = []
     var service: ApiManager = ApiManager()
     var error: Error?
@@ -43,7 +43,7 @@ class CountryViewModel: CountryViewModelProtocol {
     }
 
     func mapData() {
-        self.observableCountries.value = self.countries
+        self.observableCountries.value = self.countries.compactMap({CountryTableCellViewModel(country: $0) })
     }
     
     func search(country: String) async {
@@ -53,11 +53,10 @@ class CountryViewModel: CountryViewModelProtocol {
             await self.loadData()
             return
         }
-            let countries = observableCountries.value ?? []
-            filteredcountryList = countries.compactMap{
+        filteredcountryList = self.countries.compactMap{
                 $0.region.localizedCaseInsensitiveContains(country) ? $0 : nil }
             self.isSearching.value = true
-            self.observableFilterCountries.value = filteredcountryList
+        self.observableFilterCountries.value = filteredcountryList.compactMap({CountryTableCellViewModel(country: $0)})
     }
 
     func numberOfRowInSection() -> Int {

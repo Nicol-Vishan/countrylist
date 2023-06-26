@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     
     var isSearching: Bool = false
 
-    var cellDataSource: [Countries] = []
+    var cellDataSource: [CountryTableCellViewModel] = []
         
     override func viewDidLoad() {
         super.viewDidLoad()
