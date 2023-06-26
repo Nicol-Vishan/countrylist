@@ -54,30 +54,13 @@ class CountryViewModel: CountryViewModelProtocol {
             return
         }
             let countries = observableCountries.value ?? []
-            filteredcountryList = countries.compactMap { $0.region.localizedCaseInsensitiveContains(country) ? $0 : nil }
+            filteredcountryList = countries.compactMap{
+                $0.region.localizedCaseInsensitiveContains(country) ? $0 : nil }
             self.isSearching.value = true
             self.observableFilterCountries.value = filteredcountryList
     }
 
     func numberOfRowInSection() -> Int {
         return isSearching.value ?? true ? self.filteredcountryList.count : self.countries.count
-    }
-}
-extension UIImageView {
-    
-    func designFlag() {
-        layer.masksToBounds = true
-        layer.cornerRadius = 10
-    }
-    func loadImage(url:URL){
-        DispatchQueue.global().async {
-            if let data = try? Data(contentsOf: url){
-                if let image = UIImage(data: data){
-                    DispatchQueue.main.async {
-                        self.image = image
-                    }
-                }
-            }
-        }
     }
 }
