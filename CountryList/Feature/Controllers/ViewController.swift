@@ -27,9 +27,9 @@ class ViewController: UIViewController {
     private func setupUI() {
         navigationItem.searchController = searchController
         title = "Country List"
+        bindViewModel()
         setupTableView()
         setupSearchBar()
-        bindViewModel()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -47,10 +47,11 @@ class ViewController: UIViewController {
             reloadTableView()
         }
     }
-    
+
     func filtering(searchText: String) {
         Task {
-            viewModel.search(country: searchText)
+            await viewModel.search(country: searchText)
+            reloadTableView()
         }
     }
 

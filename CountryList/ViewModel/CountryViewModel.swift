@@ -14,7 +14,7 @@ protocol CountryViewModelProtocol {
     var error: Error? {get set}
     var service: ApiManager {get}
     func loadData() async
-    func search(country: String)
+    func search(country: String) async
     var filteredcountryList: [Countries] {get set}
 }
 
@@ -22,13 +22,13 @@ class CountryViewModel: CountryViewModelProtocol {
     var countries: [Countries] = []
     var observableCountries: Observable<[Countries]> = Observable(value: nil)
     var observableFilterCountries: Observable<[Countries]> = Observable(value: nil)
-    var isSearching: Observable<Bool> = Observable(value: false)
     var searchResult: [Countries] = []
     var service: ApiManager = ApiManager()
     var error: Error?
     var filteredcountryList: [Countries] = []
+    var isSearching: Observable<Bool> = Observable(value: false)
     
-    func loadData() async {
+   func loadData() async {
         let result = try? await service.loadCountryData()
         switch result {
         case .success(let countries):
@@ -46,10 +46,11 @@ class CountryViewModel: CountryViewModelProtocol {
         self.observableCountries.value = self.countries
     }
     
-    func search(country: String) {
+    func search(country: String) async {
         guard !country.isEmpty else {
             self.isSearching.value = false
             self.observableFilterCountries.value = []
+            await self.loadData()
             return
         }
             let countries = observableCountries.value ?? []
@@ -58,10 +59,8 @@ class CountryViewModel: CountryViewModelProtocol {
             self.observableFilterCountries.value = filteredcountryList
     }
 
-    func numberOfRowInSection(isSearchControllerActive: Bool) -> Int {
-        isSearching.value = isSearchControllerActive
-
-        return isSearchControllerActive ? self.filteredcountryList.count : self.countries.count
+    func numberOfRowInSection() -> Int {
+        return isSearching.value ?? true ? self.filteredcountryList.count : self.countries.count
     }
 }
 extension UIImageView {

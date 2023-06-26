@@ -22,11 +22,7 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isSearching {
-            return self.viewModel.filteredcountryList.count
-        } else {
-            return self.cellDataSource.count
-        }
+        viewModel.numberOfRowInSection()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -35,7 +31,7 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource{
             return UITableViewCell()
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CountryTableViewCell
-        if searchController.isActive && searchController.searchBar.text != "" && viewModel.filteredcountryList.count > 0{
+        if isSearching {
             cell.setupUI(tableView: tableView, cName: self.cellDataSource[indexPath.row].name.common, cFlag: self.cellDataSource[indexPath.row].flags.png ?? "")
         } else {
             cell.setupUI(tableView: tableView, cName: self.cellDataSource[indexPath.row].name.common, cFlag: self.cellDataSource[indexPath.row].flags.png ?? "")
